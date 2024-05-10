@@ -1,5 +1,5 @@
 {
-  "name": "@xei/sdk-core",
+  "name": "@xeiswap/sdk-core",
   "license": "MIT",
   "version": "0.0.1",
   "description": "⚒️ An SDK for building applications on top of Xei V3",
