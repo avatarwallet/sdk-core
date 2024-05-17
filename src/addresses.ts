@@ -247,7 +247,7 @@ const BSC_TESTNET_ADDRESSES: ChainAddresses = {
 
 const SEI_TESTNET_ADDRESSES: ChainAddresses = {
   v3CoreFactoryAddress: '0x79053641495cBbB965B07ED4281CD0cffe340249',
-  multicallAddress: '0xE5B7f03363CE9CbD393F178F1cB6B5584386b0CC',
+  multicallAddress: '0xCc2c5456CD2d19E4521df2071AaCDFB8BB48ad80',
   quoterAddress: '0x6Cdcd65e03c1CEc3730AeeCd45bc140D57A25C77',
   v3MigratorAddress: '0x15CA7043CD84C5D21Ae76Ba0A1A967d42c40ecE0',
   nonfungiblePositionManagerAddress: '0xBE4e3647091F3136254Ea93800D3e948f35af8a6',
