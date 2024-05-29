@@ -25,7 +25,7 @@ export enum ChainId {
 
   BSC_TESTNET = 97,
   SEI_TESTNET = 713715,
-  SEI = 513
+  SEI = 1329
 }
 
 export const SUPPORTED_CHAINS = [ChainId.BSC_TESTNET, ChainId.SEI_TESTNET, ChainId.SEI] as const
