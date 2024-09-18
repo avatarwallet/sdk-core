@@ -27,7 +27,7 @@ export const UNI_ADDRESSES: AddressMap = constructSameAddressMap('0x1f9840a85d5a
   ChainId.ARBITRUM_ONE,
   ChainId.POLYGON,
   ChainId.POLYGON_MUMBAI,
-  ChainId.SEPOLIA
+  ChainId.SEPOLIA,
 ])
 
 export const UNISWAP_NFT_AIRDROP_CLAIM_ADDRESS = '0x8B799381ac40b838BBA4131ffB26197C432AFe78'
@@ -47,7 +47,7 @@ export const V2_FACTORY_ADDRESSES: AddressMap = {
   [ChainId.BNB]: '0x8909Dc15e40173Ff4699343b6eB8132c65e18eC6',
   [ChainId.POLYGON]: '0x9e5A52f57b3038F1B8EeE45F28b3C1967e22799C',
   [ChainId.CELO]: '0x79a530c8e2fA8748B7B40dd3629C0520c2cCf03f',
-  [ChainId.BLAST]: '0x5C346464d33F90bABaf70dB6388507CC889C1070'
+  [ChainId.BLAST]: '0x5C346464d33F90bABaf70dB6388507CC889C1070',
 }
 /**
  * @deprecated use V2_ROUTER_ADDRESSES instead
@@ -62,7 +62,7 @@ export const V2_ROUTER_ADDRESSES: AddressMap = {
   [ChainId.AVALANCHE]: '0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24',
   [ChainId.BNB]: '0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24',
   [ChainId.POLYGON]: '0xedf6066a2b290c185783862c7f4776a2c8077ad1',
-  [ChainId.BLAST]: '0xBB66Eb1c5e875933D44DAe661dbD80e5D9B03035'
+  [ChainId.BLAST]: '0xBB66Eb1c5e875933D44DAe661dbD80e5D9B03035',
 }
 
 // Networks that share most of the same addresses i.e. Mainnet, Goerli, Optimism, Arbitrum, Polygon
@@ -242,7 +242,7 @@ const BSC_TESTNET_ADDRESSES: ChainAddresses = {
   v3MigratorAddress: '0x46A15B0b27311cedF172AB29E4f4766fbE7F4364',
   nonfungiblePositionManagerAddress: '0x427bF5b37357632377eCbEC9de3626C71A5396c1',
   tickLensAddress: '0xac1cE734566f390A94b00eb9bf561c2625BF44ea',
-  swapRouter02Address: '0x10ED43C718714eb63d5aA57B78B54704E256024E'
+  swapRouter02Address: '0x10ED43C718714eb63d5aA57B78B54704E256024E',
 }
 
 const SEI_TESTNET_ADDRESSES: ChainAddresses = {
@@ -252,7 +252,7 @@ const SEI_TESTNET_ADDRESSES: ChainAddresses = {
   v3MigratorAddress: '0x15CA7043CD84C5D21Ae76Ba0A1A967d42c40ecE0',
   nonfungiblePositionManagerAddress: '0xBE4e3647091F3136254Ea93800D3e948f35af8a6',
   tickLensAddress: '0x189653848715d11acC992260962b044DA1521Fd1',
-  swapRouter02Address: '0x549FEB8c9bd4c12Ad2AB27022dA12492aC452B66'
+  swapRouter02Address: '0x549FEB8c9bd4c12Ad2AB27022dA12492aC452B66',
 }
 
 const SEI_ADDRESSES: ChainAddresses = {
@@ -262,7 +262,17 @@ const SEI_ADDRESSES: ChainAddresses = {
   v3MigratorAddress: '0x15CA7043CD84C5D21Ae76Ba0A1A967d42c40ecE0',
   nonfungiblePositionManagerAddress: '0x705e082c966Dd842030f9B6736A41A66551b8237',
   tickLensAddress: '0xF77a6fEe49898a76C0Ad14e2cbb32Ca30669aF57',
-  swapRouter02Address: '0x549FEB8c9bd4c12Ad2AB27022dA12492aC452B66'
+  swapRouter02Address: '0x549FEB8c9bd4c12Ad2AB27022dA12492aC452B66',
+}
+
+const OPBNB_ADDRESSES: ChainAddresses = {
+  v3CoreFactoryAddress: '0xc5C1c5BC364D93E054770112152a841F4068daEa',
+  multicallAddress: '0x8193db681B83E86f2CBdBf278756e6bA332ee3eF',
+  quoterAddress: '0x6Cdcd65e03c1CEc3730AeeCd45bc140D57A25C77',
+  v3MigratorAddress: '0x15CA7043CD84C5D21Ae76Ba0A1A967d42c40ecE0',
+  nonfungiblePositionManagerAddress: '0xE0Efb9b62367abC2dDF68146BeECFd31250fE866',
+  tickLensAddress: '0xd2092baF980b697B17a1559A6df0f53d360689F8',
+  swapRouter02Address: '0x549FEB8c9bd4c12Ad2AB27022dA12492aC452B66',
 }
 
 export const CHAIN_TO_ADDRESSES_MAP: Record<SupportedChainsType, ChainAddresses> = {
@@ -289,7 +299,8 @@ export const CHAIN_TO_ADDRESSES_MAP: Record<SupportedChainsType, ChainAddresses>
   // [ChainId.BLAST]: BLAST_ADDRESSES,
   [ChainId.BSC_TESTNET]: BSC_TESTNET_ADDRESSES,
   [ChainId.SEI_TESTNET]: SEI_TESTNET_ADDRESSES,
-  [ChainId.SEI]: SEI_ADDRESSES
+  [ChainId.SEI]: SEI_ADDRESSES,
+  [ChainId.OPBNB]: OPBNB_ADDRESSES,
 }
 
 /* V3 Contract Addresses */
@@ -297,7 +308,7 @@ export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
   ...SUPPORTED_CHAINS.reduce<AddressMap>((memo, chainId) => {
     memo[chainId] = CHAIN_TO_ADDRESSES_MAP[chainId].v3CoreFactoryAddress
     return memo
-  }, {})
+  }, {}),
 }
 
 export const V3_MIGRATOR_ADDRESSES: AddressMap = {
@@ -307,14 +318,14 @@ export const V3_MIGRATOR_ADDRESSES: AddressMap = {
       memo[chainId] = v3MigratorAddress
     }
     return memo
-  }, {})
+  }, {}),
 }
 
 export const MULTICALL_ADDRESSES: AddressMap = {
   ...SUPPORTED_CHAINS.reduce<AddressMap>((memo, chainId) => {
     memo[chainId] = CHAIN_TO_ADDRESSES_MAP[chainId].multicallAddress
     return memo
-  }, {})
+  }, {}),
 }
 
 /**
@@ -327,30 +338,30 @@ export const GOVERNANCE_ALPHA_V0_ADDRESSES: AddressMap = constructSameAddressMap
  * The older V1 governance address
  */
 export const GOVERNANCE_ALPHA_V1_ADDRESSES: AddressMap = {
-  [ChainId.MAINNET]: '0xC4e172459f1E7939D522503B81AFAaC1014CE6F6'
+  [ChainId.MAINNET]: '0xC4e172459f1E7939D522503B81AFAaC1014CE6F6',
 }
 /**
  * The latest governor bravo that is currently admin of timelock
  */
 export const GOVERNANCE_BRAVO_ADDRESSES: AddressMap = {
-  [ChainId.MAINNET]: '0x408ED6354d4973f66138C91495F2f2FCbd8724C3'
+  [ChainId.MAINNET]: '0x408ED6354d4973f66138C91495F2f2FCbd8724C3',
 }
 
 export const TIMELOCK_ADDRESSES: AddressMap = constructSameAddressMap('0x1a9C8182C09F50C8318d769245beA52c32BE35BC')
 
 export const MERKLE_DISTRIBUTOR_ADDRESS: AddressMap = {
-  [ChainId.MAINNET]: '0x090D4613473dEE047c3f2706764f49E0821D256e'
+  [ChainId.MAINNET]: '0x090D4613473dEE047c3f2706764f49E0821D256e',
 }
 
 export const ARGENT_WALLET_DETECTOR_ADDRESS: AddressMap = {
-  [ChainId.MAINNET]: '0xeca4B0bDBf7c55E9b7925919d03CbF8Dc82537E8'
+  [ChainId.MAINNET]: '0xeca4B0bDBf7c55E9b7925919d03CbF8Dc82537E8',
 }
 
 export const QUOTER_ADDRESSES: AddressMap = {
   ...SUPPORTED_CHAINS.reduce<AddressMap>((memo, chainId) => {
     memo[chainId] = CHAIN_TO_ADDRESSES_MAP[chainId].quoterAddress
     return memo
-  }, {})
+  }, {}),
 }
 
 export const NONFUNGIBLE_POSITION_MANAGER_ADDRESSES: AddressMap = {
@@ -360,15 +371,15 @@ export const NONFUNGIBLE_POSITION_MANAGER_ADDRESSES: AddressMap = {
       memo[chainId] = nonfungiblePositionManagerAddress
     }
     return memo
-  }, {})
+  }, {}),
 }
 
 export const ENS_REGISTRAR_ADDRESSES: AddressMap = {
-  ...constructSameAddressMap('0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e')
+  ...constructSameAddressMap('0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e'),
 }
 
 export const SOCKS_CONTROLLER_ADDRESSES: AddressMap = {
-  [ChainId.MAINNET]: '0x65770b5283117639760beA3F867b69b3697a91dd'
+  [ChainId.MAINNET]: '0x65770b5283117639760beA3F867b69b3697a91dd',
 }
 
 export const TICK_LENS_ADDRESSES: AddressMap = {
@@ -378,7 +389,7 @@ export const TICK_LENS_ADDRESSES: AddressMap = {
       memo[chainId] = tickLensAddress
     }
     return memo
-  }, {})
+  }, {}),
 }
 
 export const MIXED_ROUTE_QUOTER_V1_ADDRESSES: AddressMap = SUPPORTED_CHAINS.reduce<AddressMap>((memo, chainId) => {

@@ -25,11 +25,13 @@ export enum ChainId {
 
   BSC_TESTNET = 97,
   SEI_TESTNET = 713715,
-  SEI = 1329
+  SEI = 1329,
+
+  OPBNB = 204,
 }
 
-export const SUPPORTED_CHAINS = [ChainId.BSC_TESTNET, ChainId.SEI_TESTNET, ChainId.SEI] as const
-export type SupportedChainsType = typeof SUPPORTED_CHAINS[number]
+export const SUPPORTED_CHAINS = [ChainId.BSC_TESTNET, ChainId.SEI_TESTNET, ChainId.SEI, ChainId.OPBNB] as const
+export type SupportedChainsType = (typeof SUPPORTED_CHAINS)[number]
 
 export enum NativeCurrencyName {
   // Strings match input for CLI
@@ -41,5 +43,5 @@ export enum NativeCurrencyName {
   BNB = 'BNB',
   AVAX = 'AVAX',
   ROOTSTOCK = 'RBTC',
-  SEI = 'SEI'
+  SEI = 'SEI',
 }
